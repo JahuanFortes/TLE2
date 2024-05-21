@@ -1,0 +1,133 @@
+/*************/
+ /*TUTORIAL*/
+/*************/
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #b5b5b5;
+}
+
+    .background-1 { 
+        height: 90vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        background-color: #a8a5a5;
+        z-index: 1;
+    }
+
+    .background-2 { 
+        height: 75vh;
+        width: 95vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color:#9c9b9b;
+        z-index: 3;
+    }
+
+    .rectangle { 
+        height: 20vh;
+        width: 100vw;
+        position: absolute;
+        margin-top: 40vh;
+        z-index: 2;
+        background-color: #b5b5b5;
+    }
+
+    /*****************/
+    /*pic-slider*/
+    /*****************/
+
+    .slideshow-container {
+        max-width: 50vw;
+        position: relative;
+        margin: auto;
+    }
+
+    .slides {
+        display: none;
+    }
+
+    img {
+        max-width: 30vw;
+        max-height:30vh;
+        width: auto;
+        height: auto;
+    }
+
+    /**************/
+    /*Buttons*/
+    /**************/
+
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        user-select: none;
+        width: auto;
+        color: white;
+        font-weight: bold;
+        /* margin-top: -22px; */
+        top: 40%;       
+        padding: 16px;
+        font-size: 18px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+      }
+
+      .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+      }
+
+      .prev:hover, .next:hover {
+        background-color: #b5b5b5;
+      }
+
+    /*********************************/
+    /* The dots/bullets/indicators */
+    /*********************************/
+        .progress-bar-container {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+        }
+
+        .dot {
+            cursor: pointer;
+            background-color: #bbb;
+            border: 5px solid #ffffff;
+            display: inline-block;
+            border-radius: 50%;
+            height: 4vw;
+            width: 4vw;
+            margin: 0 1vw;
+            transition: background-color 0.6s ease;
+        }
+        
+        .active, .dot:hover {
+            background-color: #000000;
+        }
+        
+        /* Fading animation */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        .caption {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+        }
+        
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
