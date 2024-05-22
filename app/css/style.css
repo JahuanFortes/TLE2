@@ -4,6 +4,55 @@
         justify-content: center;
         align-items: center;
     }
+
+    .button-long {
+        text-decoration: none;
+        background-color: #C9ADA7;
+        color: #F2E9E4;
+        box-shadow: 0px 15px 10px 0px rgba(78, 78, 78, 0.3);
+        border-radius: 9em 9em;
+        width: 10vw;
+        height: 5vh;
+    }
+
+    .button-round{
+        text-decoration: none;
+        background-color: #C9ADA7;
+        color: #F2E9E4;
+        border-color: transparent;
+        box-shadow: 0px 15px 10px 0px rgba(78, 78, 78, 0.3);
+        border-radius: 9em 9em 9em 9em;
+        width: 5vw;
+        height: 10vh;
+    }
+    
+
+    .icon {
+        width: 3vw;
+        height: 6vh;
+    }
+
+    /*#region "scrollbar"*/
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #6c6c6c; 
+        }
+        
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #888; 
+        }
+        
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555; 
+        }
+    /*#endregion*/
+
 /*#endregion*/
 
 /*#region "TUTORIAL"*/
@@ -37,6 +86,10 @@
         margin-top: 40vh;
         z-index: 2;
         background-color: #b5b5b5;
+    }
+
+    .button-tutorial {
+        margin-bottom: 5vh;
     }
     /*#endregion*/
 
@@ -89,7 +142,9 @@
 
         /*#region "the dots"*/
             .progress-bar {
-                margin-bottom: 5vh;
+                position: absolute;
+                width: 100vw;
+                transform: translate(0, 45vh);
             }
 
             .dot {
@@ -107,6 +162,21 @@
             .active, .dot:hover {
                 background-color: #000000;
             }
+
+            @media only screen and (max-width: 1500px) {
+                .dot {
+                    height: 6vw;
+                    width: 6vw;
+                }
+            }
+
+            @media only screen and (max-width: 1000px) {
+                .dot {
+                    height: 8vw;
+                    width: 8vw;
+                }
+            }
+
             /*#endregion*/
 
             /*#region "fading animation"*/
@@ -119,6 +189,152 @@
                 from {opacity: .4}
                 to {opacity: 1}
             }
+            /*#endregion*/
+        /*#endregion*/
+    /*#endregion*/
+/*#endregion*/
+
+/*#region "main-page"*/
+    /*#region "nav"*/
+        .nav-container {
+            width: 10vw;
+            height: 5vw;
+            display: flex;
+            justify-content: right;
+            align-content: right;
+            margin-right: 2.5vw;
+            margin-left: auto;
+        }
+
+        .hamburger-icon {
+            width: 3vw;
+            height: 6vh;
+        }
+
+        /*#region "overlay"*/
+            .overlay { 
+                overflow-x: hidden; /* Disable horizontal scroll */
+                position: fixed;
+                height: 100%;
+                width: 0;
+                z-index: 1;
+                right: 0;
+                top: 0;
+                background-color: rgb(0,0,0);
+                background-color: rgba(0,0,0, 0.9); 
+                transition: 0.5s; 
+            }
+            
+            .overlay-content {
+                position: relative;
+                text-align: center; 
+                top: 25%; 
+                width: 100%; 
+            }
+            
+            .overlay a {
+                text-decoration: none;
+                color: #818181;
+                display: block; 
+                transition: 0.3s; 
+                font-size: 3em;
+                padding: 3vh;
+            }
+            
+            .overlay a:hover, .overlay a:focus {
+                color: #f1f1f1;
+            }
+
+            .overlay .closebtn {
+                position: absolute;
+                top: 20px;
+                right: 45px;
+                font-size: 5em;
+            }
+            
+            @media only screen and (max-width: 1000px) {
+                .overlay a {
+                    font-size: 5em
+                }
+            }
+        /*#endregion*/
+    /*#endregion*/
+
+    /*#region "main"*/
+        /*#region "video-section"*/
+            .video-section {
+                display: flex;
+                flex-direction: column;
+            }
+            /*#region "videofeed"*/
+                .videofeed {
+                    background-color:#0015ff;
+                    justify-content: space-around;
+                    width: 100vw;
+                    height: 60vh;
+                }
+
+                .webcam {
+                    background-color:rgb(255, 0, 4);
+                    width: 45vw;;
+                    height: 50vh;
+                }
+            /*#endregion*/
+
+            /*#region "chatboxes"*/
+                .chat-history {
+                    background-color:#b5b5b5;
+                    overflow-y: scroll;
+                    padding-top: 2vh;
+                    padding-left: 2vh;
+                    margin-bottom: 0.5vh;
+                    width: 45vw;;
+                    height: 50vh;
+                }
+
+                .message {
+                    width: auto;
+                    height: auto;
+                    max-width: 80%;
+                    min-width: 40%;
+                    min-height: 5%;
+                    padding: 1vw;
+                    margin: 1vw;
+                    margin-bottom: 5vh;
+                }
+
+
+                .left {
+                    background-color: #a8a5a5;
+                    margin-right: 1vw;
+                    border-radius: 0.5em 0.5em 0.5em 0em;
+                }
+
+                .right {
+                    background-color: #9c9b9b;
+                    margin-left: 5vw;
+                    border-radius: 0.5em 0.5em 0.0em 0.5em;
+                }
+
+
+
+
+
+                /* border-radius: 9em 9em 0em 9em; */
+                .translation-label {
+                    font-size: 1.25em;
+                }
+            /*#endregion*/
+
+            /*#region "buttons"*/
+            .button-container {
+                display: flex;
+                justify-content: space-around;
+                background-color: #9c9b9b;
+                width: 100vw;
+                height: 20vh;
+            }
+            
             /*#endregion*/
         /*#endregion*/
     /*#endregion*/
