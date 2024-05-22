@@ -15,12 +15,12 @@
             border: none;
         }
 
-        #voiceRec {
+        .voiceRec {
             color: #C9ADA7;
             font-size: 48px;
         }
 
-        #voiceRec:hover {
+        .voiceRec:hover {
             color: #4A4E69;
             cursor: pointer;
         }
@@ -33,7 +33,7 @@
     <section id="speak">
 
 
-        <button class="button" type="button" id="startButton"><i class="fa fa-microphone" id="voiceRec"></i></button>
+        <button class="button" type="button" id="voiceButton"><i class="fa fa-microphone voiceRec" id="startSpeech"></i><i class="fa fa-stop-circle voiceRec" id="endSpeech"></i></button>
 
         <textarea id="input" name="input" placeholder="jouw zinnen komen hier" rows="5" cols="10"
             wrap="soft"></textarea>
