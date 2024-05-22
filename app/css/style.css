@@ -1,21 +1,22 @@
-/*************/
- /*TUTORIAL*/
-/*************/
+/*#region "main-components"*/
+    .flex-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+/*#endregion*/
 
-body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #b5b5b5;
-}
+/*#region "TUTORIAL"*/
+    /*#region "background-compontents"*/
+    body {
+        margin: 0;
+        height: 100vh;
+        background-color: #b5b5b5;
+    }
 
     .background-1 { 
         height: 90vh;
         width: 100vw;
-        display: flex;
-        justify-content: center;
         align-items: flex-start;
         background-color: #a8a5a5;
         z-index: 1;
@@ -24,10 +25,7 @@ body {
     .background-2 { 
         height: 75vh;
         width: 95vw;
-        display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
         background-color:#9c9b9b;
         z-index: 3;
     }
@@ -40,11 +38,9 @@ body {
         z-index: 2;
         background-color: #b5b5b5;
     }
+    /*#endregion*/
 
-    /*****************/
-    /*pic-slider*/
-    /*****************/
-
+    /*#region "pic-slider"*/
     .slideshow-container {
         max-width: 50vw;
         position: relative;
@@ -56,78 +52,74 @@ body {
     }
 
     img {
-        max-width: 30vw;
+        max-width: 50vw;
         max-height:30vh;
         width: auto;
         height: auto;
     }
 
-    /**************/
-    /*Buttons*/
-    /**************/
+    .caption {
+        font-size: 1.25em;
+    }
 
-    .prev, .next {
-        cursor: pointer;
-        position: absolute;
-        user-select: none;
-        width: auto;
-        color: white;
-        font-weight: bold;
-        /* margin-top: -22px; */
-        top: 40%;       
-        padding: 16px;
-        font-size: 18px;
-        transition: 0.6s ease;
-        border-radius: 0 3px 3px 0;
-      }
-
-      .next {
-        right: 0;
-        border-radius: 3px 0 0 3px;
-      }
-
-      .prev:hover, .next:hover {
-        background-color: #b5b5b5;
-      }
-
-    /*********************************/
-    /* The dots/bullets/indicators */
-    /*********************************/
-        .progress-bar-container {
-            display: flex;
-            justify-content: center;
-            align-content: center;
-        }
-
-        .dot {
+        /*#region "buttons"*/
+        .prev, .next {
             cursor: pointer;
-            background-color: #bbb;
-            border: 5px solid #ffffff;
-            display: inline-block;
-            border-radius: 50%;
-            height: 4vw;
-            width: 4vw;
-            margin: 0 1vw;
-            transition: background-color 0.6s ease;
-        }
-        
-        .active, .dot:hover {
-            background-color: #000000;
-        }
-        
-        /* Fading animation */
-        .fade {
-            animation-name: fade;
-            animation-duration: 1.5s;
+            position: absolute;
+            user-select: none;
+            width: auto;
+            color: white;
+            font-weight: bold;
+            top: 40%;       
+            padding: 16px;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
         }
 
-        .caption {
-            display: flex;
-            justify-content: center;
-            align-content: center;
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
         }
-        
-        @keyframes fade {
-            from {opacity: .4}
-            to {opacity: 1}
+
+        .prev:hover, .next:hover {
+            background-color: #b5b5b5;
         }
+        /*#endregion*/
+
+        /*#region "the dots"*/
+            .progress-bar {
+                margin-bottom: 5vh;
+            }
+
+            .dot {
+                cursor: pointer;
+                background-color: #bbb;
+                border: 5px solid #ffffff;
+                display: inline-block;
+                border-radius: 50%;
+                height: 4vw;
+                width: 4vw;
+                margin: 0 1vw;
+                transition: background-color 0.6s ease;
+            }
+            
+            .active, .dot:hover {
+                background-color: #000000;
+            }
+            /*#endregion*/
+
+            /*#region "fading animation"*/
+            .fade {
+                animation-name: fade;
+                animation-duration: 1.5s;
+            }
+            
+            @keyframes fade {
+                from {opacity: .4}
+                to {opacity: 1}
+            }
+            /*#endregion*/
+        /*#endregion*/
+    /*#endregion*/
+/*#endregion*/
