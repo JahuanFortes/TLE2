@@ -1,4 +1,14 @@
 /*#region "main-components"*/
+    @font-face {
+        font-family: 'TitilliumWebRegular'; 
+        src: url('./fonts/Titillium_Web/TitilliumWeb-Regular.ttf'); 
+    }
+
+    @font-face {
+        font-family: 'TitilliumWebBold'; 
+        src: url('./fonts/Titillium_Web/TitilliumWeb-Bold.ttf'); 
+    }
+
     .flex-center {
         display: flex;
         justify-content: center;
@@ -9,10 +19,12 @@
         text-decoration: none;
         background-color: #C9ADA7;
         color: #F2E9E4;
+        font-size: 1.5em;
         box-shadow: 0px 15px 10px 0px rgba(78, 78, 78, 0.3);
         border-radius: 9em 9em;
-        width: 10vw;
-        height: 5vh;
+        width: 200px;
+        height: 50px;
+
     }
 
     .button-round{
@@ -21,15 +33,15 @@
         color: #F2E9E4;
         border-color: transparent;
         box-shadow: 0px 15px 10px 0px rgba(78, 78, 78, 0.3);
-        border-radius: 9em 9em 9em 9em;
-        width: 5vw;
-        height: 10vh;
+        border-radius: 50%;
+        width: 75px;
+        height: 75px;
     }
     
 
     .icon {
-        width: 3vw;
-        height: 6vh;
+        width: 50px;
+        height: 50px;
     }
 
     /*#region "scrollbar"*/
@@ -61,6 +73,7 @@
         margin: 0;
         height: 100vh;
         background-color: #b5b5b5;
+        font-family: 'TitilliumWebRegular';
     }
 
     .background-1 { 
@@ -163,7 +176,7 @@
                 background-color: #000000;
             }
 
-            @media only screen and (max-width: 1500px) {
+            @media only screen and (max-width: 1400px) {
                 .dot {
                     height: 6vw;
                     width: 6vw;
@@ -207,8 +220,21 @@
         }
 
         .hamburger-icon {
-            width: 3vw;
-            height: 6vh;
+            width: 50px;
+            height: 50px;
+        }
+
+        @media only screen and (max-width: 1000px) {
+            .nav-container {
+                width: 10vw;
+                height: 10vw;
+            }
+
+            nav {
+                display: flex;
+                justify-content: end;
+                align-items: center;
+            }
         }
 
         /*#region "overlay"*/
@@ -274,8 +300,11 @@
                     height: 60vh;
                 }
 
-                .webcam {
+                .video-container {
                     background-color:rgb(255, 0, 4);
+                }
+
+                .webcam {
                     width: 45vw;;
                     height: 50vh;
                 }
@@ -285,9 +314,6 @@
                 .chat-history {
                     background-color:#b5b5b5;
                     overflow-y: scroll;
-                    padding-top: 2vh;
-                    padding-left: 2vh;
-                    margin-bottom: 0.5vh;
                     width: 45vw;;
                     height: 50vh;
                 }
@@ -295,6 +321,8 @@
                 .message {
                     width: auto;
                     height: auto;
+                    display: flex;
+                    flex-direction: column;
                     max-width: 80%;
                     min-width: 40%;
                     min-height: 5%;
@@ -306,35 +334,69 @@
 
                 .left {
                     background-color: #a8a5a5;
-                    margin-right: 1vw;
+                    margin-left: 2vw;
                     border-radius: 0.5em 0.5em 0.5em 0em;
                 }
 
                 .right {
                     background-color: #9c9b9b;
+                    text-align: right;
                     margin-left: 5vw;
                     border-radius: 0.5em 0.5em 0.0em 0.5em;
                 }
 
-
-
-
-
-                /* border-radius: 9em 9em 0em 9em; */
                 .translation-label {
                     font-size: 1.25em;
+                    font-family: 'TitilliumWebBold';
+                }
+
+                .translation-text {
+                    font-family: 'TitilliumWebRegular';
+                }
+
+                @media only screen and (max-width: 700px) {
+                    .message {
+                        padding: 2vh;
+                    }
+                    .left {
+                        margin-left: 5vw;
+                    }
+                    .right {
+                        margin-left: 12.5vw;
+                    }
                 }
             /*#endregion*/
 
             /*#region "buttons"*/
-            .button-container {
-                display: flex;
-                justify-content: space-around;
-                background-color: #9c9b9b;
-                width: 100vw;
-                height: 20vh;
+                .button-container {
+                    display: flex;
+                    justify-content: space-around;
+                    background-color: #9c9b9b;
+                    width: 100vw;
+                    height: 20vh;
+                }
+            /*#endregion*/
+
+            /*#region "phone layout"*/
+                @media only screen and (max-width: 700px) {
+                    nav {
+                        height: 10vh;
+                    }
+                    .videofeed {
+                        flex-direction: column;
+                        height: 70vh;
+                    }
+
+                    .video-container {
+                        width: 100vw;
+                        height: 40vh;
+                    }
+
+                    .chat-history {
+                        width: 100vw;
+                        height: 30vh;
+                    }
             }
-            
             /*#endregion*/
         /*#endregion*/
     /*#endregion*/
