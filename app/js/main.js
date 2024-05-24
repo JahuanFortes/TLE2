@@ -38,3 +38,22 @@ function openNav() {
 function closeNav() {
   document.getElementById("myNav").style.width = "0%";
 }
+
+// div slider
+let slideIndex2 = 1;
+showDivs(slideIndex2);
+
+function plusDivs(n) {
+  showDivs(slideIndex2 += n);
+}
+
+function showDivs(n) {
+  let i;
+  let x = document.getElementsByClassName("my-slides");
+  if (n > x.length) {slideIndex2 = 1}
+  if (n < 1) {slideIndex2 = x.length} ;
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  x[slideIndex2-1].style.display = "block";
+}

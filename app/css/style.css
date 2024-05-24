@@ -9,10 +9,81 @@
         src: url('./fonts/Titillium_Web/TitilliumWeb-Bold.ttf'); 
     }
 
+    @font-face {
+        font-family: 'TitilliumWebBlack'; 
+        src: url('./fonts/Titillium_Web/TitilliumWeb-Black.ttf'); 
+    }
+
+    body {
+        background-color: #ffffff;
+        font-family: 'TitilliumWebRegular';
+        overflow-x: hidden;
+        width: 100vw;
+        margin: 0;
+    }
+
+    /*#region "nav"*/
+        nav {
+            background-color: #4a4e69;
+            position: sticky;
+            width: 100vw;
+            height: 10vh;
+            z-index: 99;
+            top: 0;
+        }
+
+        .h1-nav {
+            color: #D9D9D9;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+            width: 95vw;
+            height: 5vw;
+        }
+
+        .hamburger-icon {
+            width: 50px;
+            height: 50px;
+        }
+
+        @media only screen and (max-width: 1000px) {
+            .nav-container {
+                width: 90vw;
+                height: 10vw;
+            }
+
+            nav {
+                display: flex;
+                justify-content: center;
+                align-content: center;
+            }
+        }
+    /*#endregion*/
+
+    footer {
+        background-color: #22223B;
+        position: sticky;
+        margin-top: 5vh;
+        z-index: 9;
+        height: 5vh;
+    }
+
+    .footer-homepage {
+        margin-top: 85vh;
+    }
+
     .flex-center {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .flex-column {
+        display: flex;
+        flex-direction: column;
     }
 
     .button-long {
@@ -37,11 +108,39 @@
         width: 75px;
         height: 75px;
     }
+
+    .slider-button{
+        text-decoration: none;
+        background-color: transparent;
+        color: #000000;
+        border-color: transparent;
+        font-size: 4em;
+        border-radius: 50%;
+        width: 75px;
+        height: 75px;
+    }
     
 
     .icon {
         width: 50px;
         height: 50px;
+    }
+
+    h1 {
+        font-family: 'TitilliumWebBlack';
+        color: #22223B;
+        font-size: 3em;
+        margin: 0;
+    }
+
+    h2 {
+        font-size: 1.5em;
+        margin: 0;
+    }
+
+    p {
+        font-size: 1.1em;
+        margin: 2.5%;
     }
 
     /*#region "scrollbar"*/
@@ -69,36 +168,29 @@
 
 /*#region "TUTORIAL"*/
     /*#region "background-compontents"*/
-    body {
-        margin: 0;
-        height: 100vh;
-        background-color: #b5b5b5;
-        font-family: 'TitilliumWebRegular';
-    }
-
     .background-1 { 
-        height: 90vh;
-        width: 100vw;
         align-items: flex-start;
         background-color: #a8a5a5;
+        height: 90vh;
+        width: 100vw;
         z-index: 1;
     }
 
-    .background-2 { 
+    .background-2 {
+        flex-direction: column;
+        background-color:#9c9b9b; 
         height: 75vh;
         width: 95vw;
-        flex-direction: column;
-        background-color:#9c9b9b;
         z-index: 3;
     }
 
     .rectangle { 
+        position: absolute;
+        background-color: #b5b5b5;
         height: 20vh;
         width: 100vw;
-        position: absolute;
         margin-top: 40vh;
         z-index: 2;
-        background-color: #b5b5b5;
     }
 
     .button-tutorial {
@@ -108,9 +200,9 @@
 
     /*#region "pic-slider"*/
     .slideshow-container {
-        max-width: 50vw;
         position: relative;
         margin: auto;
+        max-width: 50vw;
     }
 
     .slides {
@@ -118,10 +210,10 @@
     }
 
     img {
-        max-width: 50vw;
-        max-height:30vh;
         width: auto;
         height: auto;
+        max-width: 50vw;
+        max-height:30vh;
     }
 
     .caption {
@@ -208,60 +300,32 @@
 /*#endregion*/
 
 /*#region "main-page"*/
-    /*#region "nav"*/
-        .nav-container {
-            width: 10vw;
-            height: 5vw;
-            display: flex;
-            justify-content: right;
-            align-content: right;
-            margin-right: 2.5vw;
-            margin-left: auto;
-        }
-
-        .hamburger-icon {
-            width: 50px;
-            height: 50px;
-        }
-
-        @media only screen and (max-width: 1000px) {
-            .nav-container {
-                width: 10vw;
-                height: 10vw;
-            }
-
-            nav {
-                display: flex;
-                justify-content: end;
-                align-items: center;
-            }
-        }
-
         /*#region "overlay"*/
             .overlay { 
-                overflow-x: hidden; /* Disable horizontal scroll */
+                overflow-x: hidden;
                 position: fixed;
+                background-color: #22223B; 
                 height: 100%;
                 width: 0;
-                z-index: 1;
                 right: 0;
                 top: 0;
-                background-color: rgb(0,0,0);
-                background-color: rgba(0,0,0, 0.9); 
                 transition: 0.5s; 
+                z-index: 999;
             }
             
             .overlay-content {
                 position: relative;
                 text-align: center; 
+                z-index: 999;
                 top: 25%; 
                 width: 100%; 
             }
             
             .overlay a {
                 text-decoration: none;
-                color: #818181;
+                color: #D9D9D9;
                 display: block; 
+                z-index: 999;
                 transition: 0.3s; 
                 font-size: 3em;
                 padding: 3vh;
@@ -273,6 +337,7 @@
 
             .overlay .closebtn {
                 position: absolute;
+                z-index: 999;
                 top: 20px;
                 right: 45px;
                 font-size: 5em;
@@ -284,7 +349,6 @@
                 }
             }
         /*#endregion*/
-    /*#endregion*/
 
     /*#region "main"*/
         /*#region "video-section"*/
@@ -364,6 +428,20 @@
                     .right {
                         margin-left: 12.5vw;
                     }
+
+                    .button-container {
+                        height: 10vh;
+                    }
+
+                    .button-round{
+                        width: 50px;
+                        height: 50px;
+                    }
+                
+                    .icon {
+                        width: 40px;
+                        height: 40px;
+                    }
                 }
             /*#endregion*/
 
@@ -399,5 +477,198 @@
             }
             /*#endregion*/
         /*#endregion*/
+    /*#endregion*/
+/*#endregion*/
+
+/*#region "about-page"*/
+    /*#region "layout"*/
+    .big-container {
+        overflow-y: hidden;
+        width: 100vw;
+        height: 80vh;
+    }
+
+    .big-container-2 {
+        overflow-y: hidden;
+        width: 100vw;
+        height: 80vh;
+    }
+
+    .about-container {
+        background-color: #C9ADA7;
+        height: 80vh;
+        width: 100vw;
+    }
+
+    
+    .about-container-2 {
+        background-color: #C9ADA7;
+        height: 80vh;
+        width: 100vw;
+    }
+
+    .my-slides {
+        display: flex;
+        margin-top: 5vh;
+        height: 75vh;
+        width: 100vw;
+    }
+
+    .team-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        width: 100vw;
+        margin-top: 2.5vh;
+    }
+
+    .team-box {
+        margin: 50px;
+        margin-top: 0;
+    }
+
+    .team-pic {
+        height: 300px;
+        width: 150px;
+    }
+
+    .header-box {
+        height: 10vh;;
+    }
+    
+    .box {
+        width: 35vw;
+        height: 45vh;
+    }
+
+    .text-box {
+        background-color: #F2E9E4;
+        position: relative;
+        z-index: 2;
+        border: 1px solid #555;
+        box-shadow: 0px 10px 4px 0px rgba(78, 78, 78, 0.6);
+    }
+
+    .pic-box {
+        position: relative;
+        height: 45vh;
+        width: 35vw;
+        z-index: 1;
+        top: 40px;
+        right: 25px;
+    }
+
+    .image-1, .image-2 {
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .image-1{
+        background-image: url("../pic/square.png");
+    }
+
+    .image-2{
+        background-image: url("../pic/bobber2.png");
+    }
+    /*#endregion*/
+
+    /*#region "big-slider"*/
+        .big-slider {
+            display: flex;
+            flex-direction: row;
+            position: absolute;
+            top:5;
+        }
+
+        .button-container-2 {
+            position: absolute;
+            display: flex;
+            justify-content: space-between;
+            width: 100vw;
+            top: 40vh;
+            z-index: 5;
+        }
+        
+    /*#endregion*/
+
+    /*#region "phone-team"*/
+        @media only screen and (max-width: 1250px) {
+            .button-container-2 {
+                display: none;
+            }
+            
+            .big-slider {
+                position: static;
+                flex-direction: column;
+                overflow-y: scroll;
+                overflow-x: hidden;
+                top: 0;
+            }
+
+            .big-container-2 {
+                height: 95vh;
+            }
+            
+            .about-container-2 {
+                height: 95vh;
+            }
+
+            .team-container {
+                height: 95vh;
+            }
+
+            footer {
+                margin-top: 5vh;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+    
+        }
+
+        @media only screen and (max-width: 750px) {
+            .big-container {
+                height: 90vh;
+            }
+
+            .big-container-2 {
+                height: 160vh;
+            }
+
+            .about-container {
+                height: 90vh;
+            }
+
+            .about-container-2 {
+                height: 160vh;
+            }
+
+            .box {
+                height: 30vh;
+                width: 80vw;
+                margin-bottom: 2vh;;
+            }
+
+            .pic-box {
+                position: static
+            }
+
+            .flex-column-for-phone {
+                flex-direction: column-reverse;
+                height: 60vh;
+            }
+        }
+
+        @media only screen and (max-width: 500px) {
+            .big-container-2 {
+                height: 240vh;
+            }
+
+            .about-container-2 {
+                height: 240vh;
+            }
+        }
     /*#endregion*/
 /*#endregion*/

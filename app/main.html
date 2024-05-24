@@ -9,20 +9,26 @@
     <script src="./js/main.js"></script>
 </head>
 <body>
-    <nav>
+    <nav class="flex-center">
         <div id="myNav" class="overlay">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <div class="overlay-content">
-                <a href="./main.html">Home</a>
+                <h1 class="h1-nav"> Logo </h1>
+                <a href="./main.html">Hoofdpagina</a>
                 <a href="./index.html">Help</a>
-                <a href="./about.html">About us</a>
+                <a href="./about.html">Over ons</a>
             </div>
         </div>
         
-        <div class="nav-container">
-            <span onclick="openNav()" class="nav-button flex-center">
-                <img src="./pic/hamburger-menu.webp" class="hamburger-icon" alt="Hamburger menu icon">
-            </span>
+        <div class="flex-center">
+            <div class="nav-container">
+                <div class="flex-center">
+                    <img src="./pic/bober_bobr.jpg" alt="our logo" class="icon">
+                </div>
+                <span onclick="openNav()" class="nav-button flex-center">
+                    <img src="./pic/hamburger-menu.webp" class="hamburger-icon" alt="Hamburger menu icoon">
+                </span>
+            </div>
         </div>
     </nav>
 
@@ -31,7 +37,7 @@
     <main>
         <section class="video-section flex-center">
             <div class="videofeed flex-center">
-                <div class="video-container">
+                <div class="video-container flex-center">
                     <video id="webcam" class="webcam" autoplay playsinline></video>
                 </div>
 
