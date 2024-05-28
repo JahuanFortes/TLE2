@@ -33,11 +33,43 @@
     <section id="speak">
 
 
-        <button class="button" type="button" id="voiceButton"><i class="fa fa-microphone voiceRec" id="startSpeech"></i><i class="fa fa-stop-circle voiceRec" id="endSpeech"></i></button>
+        <button class="button" type="button" id="voiceButton"><i class="fa fa-microphone voiceRec"
+                id="startSpeech"></i><i class="fa fa-stop-circle voiceRec" id="endSpeech"></i></button>
 
         <textarea id="input" name="input" placeholder="jouw zinnen komen hier" rows="5" cols="10"
             wrap="soft"></textarea>
 
+    </section>
+
+    <section id="read">
+        <h1>Speech synthesiser</h1>
+
+        <p>
+            Enter some text in the input below and press return or the "play" button
+            to hear it. change voices using the dropdown menu.
+        </p>
+
+        <form>
+            <label for="txt">Enter text</label>
+            <input id="txt" type="text" class="txt" />
+            <!-- <div>
+                <label for="rate">Rate</label><input type="range" min="0.5" max="2" value="1" step="0.1" id="rate" />
+                <div class="rate-value">1</div>
+                <div class="clearfix"></div>
+            </div>
+            <div>
+                <label for="pitch">Pitch</label><input type="range" min="0" max="2" value="1" step="0.1" id="pitch" />
+                <div class="pitch-value">1</div>
+                <div class="clearfix"></div>
+            </div> -->
+            <!-- <select></select> -->
+
+            <!-- <option data-lang="nl-NL" data-name="Google Nederlands">Google Nederlands (nl-NL)</option> -->
+            
+            <div class="controls">
+                <button id="play" type="submit">Play</button>
+            </div>
+        </form>
     </section>
 
 </body>

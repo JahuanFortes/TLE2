@@ -43,3 +43,76 @@ speechButton.addEventListener('mouseup', function () {
     speechEnd.style.display = "none";
 })
 
+
+
+
+
+const synth = window.speechSynthesis;
+
+const inputForm = document.querySelector("form");
+const inputTxt = document.querySelector(".txt");
+
+const pitch = document.querySelector("#pitch");
+const pitchValue = document.querySelector(".pitch-value");
+const rate = document.querySelector("#rate");
+const rateValue = document.querySelector(".rate-value");
+
+let voices = [];
+const defaultVoiceName = "Google Nederlands"; // Set your desired voice name here
+
+function populateVoiceList() {
+  voices = synth.getVoices().sort((a, b) => {
+    const aname = a.name.toUpperCase();
+    const bname = b.name.toUpperCase();
+    return aname.localeCompare(bname);
+  });
+}
+
+populateVoiceList();
+
+if (speechSynthesis.onvoiceschanged !== undefined) {
+  speechSynthesis.onvoiceschanged = populateVoiceList;
+}
+
+function speak() {
+  if (synth.speaking) {
+    console.error("speechSynthesis.speaking");
+    return;
+  }
+
+  if (inputTxt.value !== "") {
+    const utterThis = new SpeechSynthesisUtterance(inputTxt.value);
+
+    utterThis.onend = function (event) {
+      console.log("SpeechSynthesisUtterance.onend");
+    };
+
+    utterThis.onerror = function (event) {
+      console.error("SpeechSynthesisUtterance.onerror");
+    };
+
+    // Find and set the default voice
+    const selectedVoice = voices.find(voice => voice.name === defaultVoiceName);
+    if (selectedVoice) {
+      utterThis.voice = selectedVoice;
+    }
+
+    utterThis.pitch = 1
+    utterThis.rate = 0.9
+    synth.speak(utterThis);
+  }
+}
+
+inputForm.onsubmit = function (event) {
+  event.preventDefault();
+  speak();
+  inputTxt.blur();
+};
+
+// pitch.onchange = function () {
+//   pitchValue.textContent = pitch.value;
+// };
+
+// rate.onchange = function () {
+//   rateValue.textContent = rate.value;
+// };
