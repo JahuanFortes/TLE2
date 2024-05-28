@@ -12,7 +12,13 @@ let webcamRunning = false;
 const videoHeight = "360px";
 const videoWidth = "480px";
 let timeLog = false;
-let time = setInterval(timer, 1000);
+//let time = setInterval(timer, 1000);
+let tickUpdate = false;
+let tick = setInterval(tickTimer, 1000);
+function tickTimer(){
+    tickUpdate =!tickUpdate;
+    console.log(tickUpdate)
+}
 let recording = false;
 let appended = false;
 let currentSign = {
@@ -45,10 +51,12 @@ const loadButton = document.getElementById("poseLoad");
 const loadListener = document.addEventListener("click", loadPoses);
 let select = document.getElementById("poses");
 let ShowingCords = false;
-let recordsamplesize = 40;
+let recordsamplesize = 100;
+/*
 function timer(){
     timeLog =! timeLog;
 }
+*/
 function setrecording(){
   recording = true;
 }
@@ -227,10 +235,9 @@ async function predictWebcam() {
     
   }
   function recordPose(arr) {
-    console.log("test");
     if(currentSign.data.length<recordsamplesize){
       currentSign.data.push(arr)
-      console.log("Fuck");
+      console.log("Pushed");
     }
     else
     {
