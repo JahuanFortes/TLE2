@@ -690,9 +690,9 @@
             }
 
             .box {
-                height: 30vh;
+                height: 45vh;
                 width: 80vw;
-                margin-bottom: 2vh;;
+                margin-bottom: 2vh;
             }
 
             .pic-box {
@@ -703,15 +703,29 @@
                 flex-direction: column-reverse;
                 height: 60vh;
             }
+
+            h1 {
+                font-size: 2.5em;
+            }
         }
 
         @media only screen and (max-width: 500px) {
             .big-container-2 {
-                height: 240vh;
+                height: 260vh;
             }
 
             .about-container-2 {
-                height: 240vh;
+                height: 260vh;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+        }
+
+        @media only screen and (max-width: 350px) {
+            h1 {
+                font-size: 1.5em;
             }
         }
     /*#endregion*/
