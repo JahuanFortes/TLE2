@@ -12,7 +12,13 @@ let webcamRunning = false;
 const videoHeight = "360px";
 const videoWidth = "480px";
 let timeLog = false;
-let time = setInterval(timer, 1000);
+//let time = setInterval(timer, 1000);
+let tickUpdate = false;
+let tick = setInterval(tickTimer, 1000);
+function tickTimer(){
+    tickUpdate =!tickUpdate;
+    console.log(tickUpdate)
+}
 let recording = false;
 let appended = false;
 let currentSign = {
@@ -228,7 +234,6 @@ async function predictWebcam() {
     
   }
   function recordPose(arr) {
-    console.log("test");
     if(currentSign.data.length<recordsamplesize){
       currentSign.data.push(arr)
       console.log("Pushed");
