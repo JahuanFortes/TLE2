@@ -45,10 +45,11 @@ const loadButton = document.getElementById("poseLoad");
 const loadListener = document.addEventListener("click", loadPoses);
 let select = document.getElementById("poses");
 let ShowingCords = false;
-let recordsamplesize = 40;
+let recordsamplesize = 100
 function timer(){
     timeLog =! timeLog;
 }
+
 function setrecording(){
   recording = true;
 }
@@ -156,7 +157,7 @@ async function predictWebcam() {
   // Now let's start detecting the stream.
   if (runningMode === "IMAGE") {
     runningMode = "VIDEO";
-    await gestureRecognizer.setOptions({ runningMode: "VIDEO", numHands: 2 });
+    await gestureRecognizer.setOptions({ runningMode: "VIDEO", numHands: 1 });
   }
   let nowInMs = Date.now();
   if (video.currentTime !== lastVideoTime) {
@@ -230,7 +231,7 @@ async function predictWebcam() {
     console.log("test");
     if(currentSign.data.length<recordsamplesize){
       currentSign.data.push(arr)
-      console.log("Fuck");
+      console.log("Pushed");
     }
     else
     {

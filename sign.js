@@ -126,7 +126,7 @@ async function predictWebcam() {
   // Now let's start detecting the stream.
   if (runningMode === "IMAGE") {
     runningMode = "VIDEO";
-    await gestureRecognizer.setOptions({ runningMode: "VIDEO", numHands: 2 });
+    await gestureRecognizer.setOptions({ runningMode: "VIDEO", numHands: 1 });
   }
   let nowInMs = Date.now();
   if (video.currentTime !== lastVideoTime) {
