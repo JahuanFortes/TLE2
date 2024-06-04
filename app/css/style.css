@@ -119,6 +119,10 @@
         height: 60px;
     }
 
+    .button-round:hover{
+        background-color: #4a4e69;
+    }
+
     .slider-button{
         text-decoration: none;
         background-color: transparent;
