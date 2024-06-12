@@ -1,6 +1,6 @@
 let slideIndex = 1;
 window.addEventListener('load', function (slideIndex) {
-    showSlides(slideIndex);
+  showSlides(slideIndex);
 })
 
 // Next/previous controls
@@ -18,16 +18,16 @@ function showSlides(n) {
   let slides = document.getElementsByClassName("slides");
   let dots = document.getElementsByClassName("dot");
 
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
+  if (n > slides.length) { slideIndex = 1 }
+  if (n < 1) { slideIndex = slides.length }
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
   for (i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace(" active", "");
   }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
+  slides[slideIndex - 1].style.display = "block";
+  dots[slideIndex - 1].className += " active";
 }
 
 function openNav() {
@@ -50,10 +50,11 @@ function plusDivs(n) {
 function showDivs(n) {
   let i;
   let x = document.getElementsByClassName("my-slides");
-  if (n > x.length) {slideIndex2 = 1}
-  if (n < 1) {slideIndex2 = x.length} ;
+  if (n > x.length) { slideIndex2 = 1 }
+  if (n < 1) { slideIndex2 = x.length };
   for (i = 0; i < x.length; i++) {
     x[i].style.display = "none";
   }
-  x[slideIndex2-1].style.display = "block";
+  x[slideIndex2 - 1].style.display = "block";
 }
+
