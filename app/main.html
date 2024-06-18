@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-
+    <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/main.js"></script>
     <script src="./js/speechToText.js" type="module"></script>
+    <script defer type="module" src="../sign.js"></script>
 </head>
 
 <body>
@@ -48,6 +49,7 @@
             <div class="videofeed flex-center">
                 <div class="video-container flex-center">
                     <video id="webcam" class="webcam" autoplay playsinline></video>
+                    <canvas class="output_canvas" id="output_canvas" width="1280" height="720" style="position: absolute; left: 0px; top: 0px;"></canvas>
                 </div>
 
                 <section class="chat-history">

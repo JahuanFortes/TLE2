@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="speechToText.js" type="module"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        button {
+            border: none;
+        }
+
+        .voiceRec {
+            color: #C9ADA7;
+            font-size: 48px;
+        }
+
+        .voiceRec:hover {
+            color: #4A4E69;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <section id="speak">
+
+
+        <button class="button" type="button" id="voiceButton"><i class="fa fa-microphone voiceRec"
+                id="startSpeech"></i><i class="fa fa-stop-circle voiceRec" id="endSpeech"></i></button>
+
+        <textarea id="input" name="input" placeholder="jouw zinnen komen hier" rows="5" cols="10"
+            wrap="soft"></textarea>
+
+    </section>
+
+    <section id="read">
+        <h1>Speech synthesiser</h1>
+
+        <p>
+            Enter some text in the input below and press return or the "play" button
+            to hear it. change voices using the dropdown menu.
+        </p>
+
+        <form>
+            <label for="txt">Enter text</label>
+            <input id="txt" type="text" class="txt" />
+            <!-- <div>
+                <label for="rate">Rate</label><input type="range" min="0.5" max="2" value="1" step="0.1" id="rate" />
+                <div class="rate-value">1</div>
+                <div class="clearfix"></div>
+            </div>
+            <div>
+                <label for="pitch">Pitch</label><input type="range" min="0" max="2" value="1" step="0.1" id="pitch" />
+                <div class="pitch-value">1</div>
+                <div class="clearfix"></div>
+            </div> -->
+            <!-- <select></select> -->
+
+            <!-- <option data-lang="nl-NL" data-name="Google Nederlands">Google Nederlands (nl-NL)</option> -->
+            
+            <div class="controls">
+                <button id="play" type="submit">Play</button>
+            </div>
+        </form>
+    </section>
+
+</body>
+
+</html>
