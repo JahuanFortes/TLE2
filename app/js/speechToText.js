@@ -9,7 +9,7 @@ const chathistory = document.getElementsByClassName("chat-history");
 const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition);
 
 recognition.lang = 'nl-NL';
-// recognition.interimResults = true;
+recognition.interimResults = true;
 recognition.continuous = true;
 
 speechEnd.style.display = "none";
