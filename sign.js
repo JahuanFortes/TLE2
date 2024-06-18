@@ -1,4 +1,9 @@
-import { GestureRecognizer,FilesetResolver,DrawingUtils,PoseLandmarker} from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3";
+import {
+    GestureRecognizer,
+    FilesetResolver,
+    DrawingUtils,
+    PoseLandmarker
+  } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3";
   
   const demosSection = document.getElementById("demos");
   let gestureRecognizer = GestureRecognizer;
@@ -10,17 +15,15 @@ import { GestureRecognizer,FilesetResolver,DrawingUtils,PoseLandmarker} from "ht
   let explanationSection = document.getElementById("explanation");
   let predictionSection = document.getElementById("prediction");
   let prediction = document.createElement("h3");
-  let collectorTimer = 0;
-  let dataArray = [];
 const nn = ml5.neuralNetwork({ task: 'classification', debug: true })
 const modelDetails = {
-    model: '../model/model.json',
-    metadata: '../model/model_meta.json',
-    weights: '../model/model.weights.bin'
+    model: 'model/model.json',
+    metadata: 'model/model_meta.json',
+    weights: 'model/model.weights.bin'
 }
 nn.load(modelDetails, () => console.log("het model is geladen!"))
 function fetchJSONData() {
-    fetch("../data.json")
+    fetch("data.json")
         .then((res) => res.json())
         .then((data) => appInit(data))
         .catch((error) => console.error("Unable to fetch data:", error));
@@ -28,7 +31,6 @@ function fetchJSONData() {
 fetchJSONData();
 
 function appInit(data){
-  /*
     let keys = Object.keys(data);
     let explanationText = document.createElement("p");
     let explanationBR = document.createElement("br");
@@ -99,10 +101,10 @@ function enableCam(event) {
 
   if (webcamRunning === true) {
     webcamRunning = false;
-    //enableWebcamButton.innerText = "ENABLE PREDICTIONS";
+    enableWebcamButton.innerText = "ENABLE PREDICTIONS";
   } else {
     webcamRunning = true;
-    //enableWebcamButton.innerText = "DISABLE PREDICTIONS";
+    enableWebcamButton.innerText = "DISABLE PREDICTIONS";
   }
 
   // getUsermedia parameters.
@@ -124,7 +126,7 @@ async function predictWebcam() {
   // Now let's start detecting the stream.
   if (runningMode === "IMAGE") {
     runningMode = "VIDEO";
-    await gestureRecognizer.setOptions({ runningMode: "VIDEO", numHands: 1 });
+    await gestureRecognizer.setOptions({ runningMode: "VIDEO", numHands: 2 });
   }
   let nowInMs = Date.now();
   if (video.currentTime !== lastVideoTime) {
@@ -170,29 +172,18 @@ console.log(results.landmarks);
   }
   async function checkPose(landmarks) {
     if(landmarks != null){
-      if(collectorTimer < 50){
+        let dataArray = [];
         for(const landmark of landmarks){
             for (let i in landmark){
                 dataArray.push(landmark[i].x, landmark[i].y, landmark[i].z);
             }
         }
-        collectorTimer++;
-      } else {
-        console.log(dataArray);
-        
         let predictionResult = await nn.classify(dataArray);
-        console.log(predictionResult);
-        if(typeof predictionResult !== undefined){
-          dataArray = [];
-          collectorTimer = 0;
-        }
+
         const label = predictionResult[0].label;
         prediction.innerText = `Ik denk dat jij ${label} gebaart!`;
         predictionSection.appendChild(prediction);
         console.log("Your label is " + label);
-        
-      }
     }
   }
-
 }
