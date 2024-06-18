@@ -27,6 +27,17 @@ function fetchJSONData() {
 }
 fetchJSONData();
 
+const chatHistory = document.getElementById('history');
+function CreateTranslatedMessage(){
+  const translationMessageDiv = document.createElement("div");
+const translationMessageLabel = document.createElement("label");
+  translationMessageDiv.classList.add("message");
+  translationMessageDiv.classList.add("right");
+  translationMessageLabel.classList.add("translation-label");
+  translationMessageLabel.innerText = 'Testing!';
+  chatHistory.appendChild(translationMessageDiv);
+  translationMessageDiv.appendChild(translationMessageLabel);
+}
 function appInit(data){
   /*
     let keys = Object.keys(data);
@@ -85,7 +96,7 @@ function hasGetUserMedia() {
 // wants to activate it.
 if (hasGetUserMedia()) {
   enableWebcamButton = document.getElementById("webcamButton");
-  enableWebcamButton.addEventListener("click", enableCam);
+  enableWebcamButton.addEventListener("click", CreateTranslatedMessage);
 } else {
   console.warn("getUserMedia() is not supported by your browser");
 }

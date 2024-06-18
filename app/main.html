@@ -8,7 +8,7 @@
     <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/main.js"></script>
-    <script src="./js/speechToText.js" type="module"></script>
+    <script defer src="./js/speechToText.js" type="module"></script>
     <script defer type="module" src="../sign.js"></script>
 </head>
 
@@ -52,20 +52,18 @@
                     <canvas class="output_canvas" id="output_canvas" width="1280" height="720" style="position: absolute; left: 0px; top: 0px;"></canvas>
                 </div>
 
-                <section class="chat-history">
-                    <!-- <div class="message right">
-                        <label for="translation1" class="translation-label ">:</label>
-                        <span id="translation1" class="translation-text"> Lorem ipsum dolor sit amet consectetur
-                            adipisicing elit. Veniam corrupti deleniti, possimus beatae et earum accusamus ullam quo,
-                            corporis error nemo quas officiis consequatur nesciunt minima pariatur provident velit
-                            autem?</span>
-                    </div> -->
+                <section class="chat-history" id="history">
+                    <div class="message right">
+                        <label for="translation1" class="translation-label "></label>
+                    </div> 
 
                     <div class="message left">
-                        <label for="speechOnput" class="translation-label deaf">: </label>
+                        <label for="speechOnput" class="translation-label deaf" id="input">: </label>
                         <!-- <span id="speechOnput" class="translation-text"></span> -->
                         <p id="speechOnput" class="translation-text"></p>
                     </div>
+
+                    
 
                 </section>
             </div>
@@ -74,7 +72,7 @@
 
                 <!-- app start button-->
 
-                <button class="button-round flex-center " type="button">
+                <button class="button-round flex-center " type="button" id="webcamButton" >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                         class="size-6 icon flex-center">
                         <path fill-rule="evenodd"

@@ -1,5 +1,5 @@
 const speechButton = document.getElementById('voiceButton');
-
+const chatHistory = document.getElementById('history');
 const speechStart = document.getElementById('startSpeech');
 const speechEnd = document.getElementById('endSpeech');
 
@@ -15,7 +15,10 @@ speechEnd.style.display = "none";
 recognition.onresult = function (event) {
     const transcript = event.results[0][0].transcript;
     console.log(transcript);
-    outputText.innerText = " " + transcript;
+    if(transcript != ""){
+      CreateTranslatedMessage(transcript);
+    }
+    //outputText.innerText = " " + transcript;
 }
 
 recognition.onend = function () {
@@ -109,6 +112,16 @@ inputForm.onsubmit = function (event) {
   inputTxt.blur();
 };
 
+function CreateTranslatedMessage(text){
+  const translationMessageDiv = document.createElement("div");
+  const translationMessageLabel = document.createElement("label");
+  translationMessageDiv.classList.add("message");
+  translationMessageDiv.classList.add("left");
+  translationMessageLabel.classList.add("translation-label");
+  translationMessageLabel.innerText = text;
+  chatHistory.appendChild(translationMessageDiv);
+  translationMessageDiv.appendChild(translationMessageLabel);
+}
 // pitch.onchange = function () {
 //   pitchValue.textContent = pitch.value;
 // };
