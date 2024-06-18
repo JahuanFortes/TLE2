@@ -3,25 +3,19 @@ const speechButton = document.getElementById('voiceButton');
 const speechStart = document.getElementById('startSpeech');
 const speechEnd = document.getElementById('endSpeech');
 
-const chathistory = document.getElementsByClassName("chat-history");
-// const outputText = document.getElementById('speechOnput');
-
+const outputText = document.getElementById('input');
 const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition);
 
 recognition.lang = 'nl-NL';
-// recognition.interimResults = true;
+recognition.interimResults = true;
 recognition.continuous = true;
 
 speechEnd.style.display = "none";
 
-let transcript;
-
-
 recognition.onresult = function (event) {
-    transcript = event.results[0][0].transcript;
+    const transcript = event.results[0][0].transcript;
     console.log(transcript);
-    // output.innerText = " " + transcript;
-    newSpeechMessage(transcript);
+    outputText.innerText = " " + transcript;
 }
 
 recognition.onend = function () {
@@ -38,9 +32,7 @@ speechButton.addEventListener('mousedown', function () {
         recognition.start();
         speechStart.style.display = "none";
         speechEnd.style.display = "block";
-        // outputText.textContent = "...";
-
-
+        outputText.textContent = "...";
     }
 });
 
@@ -52,24 +44,75 @@ speechButton.addEventListener('mouseup', function () {
 })
 
 
-function newSpeechMessage(text){
-    let messageLeft = document.createElement('div');
-    messageLeft.classList.add("message");
-    messageLeft.classList.add("left");
 
-    let lableMessage = document.createElement('label');
-    lableMessage.htmlFor='speechOnput';
-    lableMessage.classList.add("translation-label");
-    lableMessage.textContent = ":";
 
-    let output = document.createElement('span');
-    output.classList.add("translation-text");
-    output.id='speechOnput';
 
-    output.textContent =  text;
+const synth = window.speechSynthesis;
 
-    messageLeft.appendChild(lableMessage);
-    messageLeft.appendChild(output);
+const inputForm = document.querySelector("form");
+const inputTxt = document.querySelector(".txt");
 
-    chathistory[0].appendChild(messageLeft)
+const pitch = document.querySelector("#pitch");
+const pitchValue = document.querySelector(".pitch-value");
+const rate = document.querySelector("#rate");
+const rateValue = document.querySelector(".rate-value");
+
+let voices = [];
+const defaultVoiceName = "Google Nederlands"; // Set your desired voice name here
+
+function populateVoiceList() {
+  voices = synth.getVoices().sort((a, b) => {
+    const aname = a.name.toUpperCase();
+    const bname = b.name.toUpperCase();
+    return aname.localeCompare(bname);
+  });
 }
+
+populateVoiceList();
+
+if (speechSynthesis.onvoiceschanged !== undefined) {
+  speechSynthesis.onvoiceschanged = populateVoiceList;
+}
+
+function speak() {
+  if (synth.speaking) {
+    console.error("speechSynthesis.speaking");
+    return;
+  }
+
+  if (inputTxt.value !== "") {
+    const utterThis = new SpeechSynthesisUtterance(inputTxt.value);
+
+    utterThis.onend = function (event) {
+      console.log("SpeechSynthesisUtterance.onend");
+    };
+
+    utterThis.onerror = function (event) {
+      console.error("SpeechSynthesisUtterance.onerror");
+    };
+
+    // Find and set the default voice
+    const selectedVoice = voices.find(voice => voice.name === defaultVoiceName);
+    if (selectedVoice) {
+      utterThis.voice = selectedVoice;
+    }
+
+    utterThis.pitch = 1
+    utterThis.rate = 0.9
+    synth.speak(utterThis);
+  }
+}
+
+inputForm.onsubmit = function (event) {
+  event.preventDefault();
+  speak();
+  inputTxt.blur();
+};
+
+// pitch.onchange = function () {
+//   pitchValue.textContent = pitch.value;
+// };
+
+// rate.onchange = function () {
+//   rateValue.textContent = rate.value;
+// };
