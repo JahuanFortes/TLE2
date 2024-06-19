@@ -73,8 +73,19 @@ nav {
   align-items: center;
 }
 
+.flex-center-top {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
 .icon {
   width: 50px;
+  height: 50px;
+}
+
+.logo {
+  width: 200x;
   height: 50px;
 }
 
@@ -126,6 +137,7 @@ footer {
 /*#region Button*/
 .button-long {
   text-decoration: none;
+  font-weight: 500;
   background-color: var(--section-color);
   color: var(--bg-color);
   font-size: 1.5em;
@@ -145,22 +157,56 @@ footer {
 }
 /*#endregion*/
 
-/*#region slinder*/
+/*#region slides*/
 .slideshow-container {
   position: relative;
   margin: auto;
   display: flex;
-  max-width: 50vw;
+  width: 90vw;
 }
 
 .slides {
   display: flex;
+  gap: 15px;
 }
 
-.slider-button {
+.slide {
+height: 235px;
+width: 450px;
+background-size: contain;
+background-position: center;
+}
+
+.slides:nth-child(1) .slide {
+  background-image: url('../pic/slider1.png');
+}
+
+.slides:nth-child(2) .slide {
+  background-image: url('../pic/slider2.png');
+}
+
+.slides:nth-child(3) .slide {
+  background-image: url('../pic/slider4.png');
+}
+
+.slides:nth-child(4) .slide {
+  background-image: url('../pic/slider3.png');
+}
+
+.slides:nth-child(5) .slide {
+  background-image: url('../pic/slider5.png');
+}
+
+.slides:nth-child(6) .slide {
+  background-image: url('../pic/slider6.png');
+}
+
+
+
+.slider-button{
   text-decoration: none;
   background-color: transparent;
-  color: var(--color-black);
+  color: #000000;
   border-color: transparent;
   font-size: 4em;
   border-radius: 50%;
@@ -255,9 +301,6 @@ p {
 /*#endregion*/
 
 /*#region "TUTORIAL"*/
-/* .main-size {
-        height: 75vh;
-    } */
 
 /*#region */
 
@@ -272,6 +315,11 @@ p {
     max-width: 70vw;
     max-height: 35vh;
   }
+
+  .slide {
+    height: 165px;
+    width: 315px;
+    }
 }
 
 @media only screen and (max-width: 1250px) {
@@ -281,6 +329,12 @@ p {
 }
 
 .caption {
+  flex-wrap: wrap;
+  text-align: center;
+  overflow-y: scroll;
+  font-weight: 500;
+  color: var(--color-white);
+  width: 80%;
   height: 10vh;
   font-size: 1.25em;
 }
@@ -440,8 +494,17 @@ p {
   height: 60vh;
 }
 
+.output_canvas {
+  position: absolute;
+  width: 45vw;
+  height: 50vh;
+  overflow: hidden;
+}
+
 .video-container {
-  background-color: rgb(255, 0, 4);
+  background-color: #4e4e4e4d;
+  margin: 0;
+  padding: 0;
 }
 
 .webcam {
@@ -514,8 +577,8 @@ p {
   }
 
   .icon {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
   }
 }
 /*#endregion*/
@@ -538,12 +601,22 @@ p {
   }
   .videofeed {
     flex-direction: column;
-    height: 70vh;
+    height: 60vh;
+  }
+
+  .webcam {
+    width: 100vw;
+    height: 30vh;
+  }
+
+  .output_canvas {
+    width: 100vw;
+    height: 30vh;
   }
 
   .video-container {
     width: 100vw;
-    height: 40vh;
+    height: 30vh;
   }
 
   .chat-history {
@@ -551,6 +624,7 @@ p {
     height: 30vh;
   }
 }
+
 /*#endregion*/
 /*#endregion*/
 /*#endregion*/
@@ -604,8 +678,9 @@ p {
 }
 
 .team-pic {
-  height: 300px;
-  width: 150px;
+  object-fit: cover;
+  height: 288px;
+  width: 152px;
 }
 
 .header-box {
@@ -625,6 +700,10 @@ p {
   box-shadow: 0px 10px 4px 0px var(--drop-shadow-color);
 }
 
+.scroll {
+  overflow-y: scroll;
+}
+
 /*#region images*/
 .pic-box {
   position: relative;
@@ -642,11 +721,11 @@ p {
 }
 
 .image-1 {
-  background-image: url("../pic/square.png");
+  background-image: url("../pic/testgroep.jpg");
 }
 
 .image-2 {
-  background-image: url("../pic/bobber2.png");
+  background-image: url("../pic/testgroep.jpg");
 }
 /*#endregion*/
 
@@ -669,7 +748,7 @@ p {
 /*#endregion*/
 
 /*#region phone*/
-@media only screen and (max-width: 1250px) {
+@media only screen and (max-width: 1355px) {
   .button-container-2 {
     display: none;
   }

@@ -5,8 +5,8 @@ import { GestureRecognizer,FilesetResolver,DrawingUtils,PoseLandmarker} from "ht
   let runningMode = "IMAGE";
   let enableWebcamButton = HTMLButtonElement;
   let webcamRunning = false;
-  const videoHeight = "360px";
-  const videoWidth = "480px";
+  // const videoHeight = "360px";
+  // const videoWidth = "480px";
   let explanationSection = document.getElementById("explanation");
   let predictionSection = document.getElementById("prediction");
   let prediction = document.createElement("h3");
@@ -147,10 +147,10 @@ async function predictWebcam() {
   canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
   const drawingUtils = new DrawingUtils(canvasCtx);
 
-  canvasElement.style.height = videoHeight;
-  webcamElement.style.height = videoHeight;
-  canvasElement.style.width = videoWidth;
-  webcamElement.style.width = videoWidth;
+  // canvasElement.style.height = videoHeight;
+  // webcamElement.style.height = videoHeight;
+  // canvasElement.style.width = videoWidth;
+  // webcamElement.style.width = videoWidth;
   //console.log(results.landmarks);
   if (results.landmarks.length > 0) {
     for (const landmarks of results.landmarks) {

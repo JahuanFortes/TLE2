@@ -33,7 +33,7 @@
         <div class="flex-center">
             <div class="nav-container">
                 <div class="flex-center">
-                    <img src="./pic/bober_bobr.jpg" alt="our logo" class="icon">
+                    <img src="./pic/logo.png" alt="our logo" class="logo">
                 </div>
                 <span onclick="openNav()" class="nav-button flex-center">
                     <img src="./pic/hamburger-menu.webp" class="hamburger-icon" alt="Hamburger menu icoon">
@@ -49,22 +49,19 @@
             <div class="videofeed flex-center">
                 <div class="video-container flex-center">
                     <video id="webcam" class="webcam" autoplay playsinline></video>
-                    <canvas class="output_canvas" id="output_canvas" width="1280" height="720" style="position: absolute; left: 0px; top: 0px;"></canvas>
+                    <canvas class="output_canvas" id="output_canvas"></canvas>
                 </div>
 
                 <section class="chat-history" id="history">
                     <div class="message right">
-                        <label for="translation1" class="translation-label "></label>
+                        <label for="translation1" class="translation-label"> Vertaalde tekst</label>
                     </div> 
 
                     <div class="message left">
-                        <label for="speechOnput" class="translation-label deaf" id="input">: </label>
+                        <label for="speechOnput" class="translation-label deaf" id="input"> Ingesproken tekst </label>
                         <!-- <span id="speechOnput" class="translation-text"></span> -->
                         <p id="speechOnput" class="translation-text"></p>
                     </div>
-
-                    
-
                 </section>
             </div>
 
@@ -74,7 +71,7 @@
 
                 <button class="button-round flex-center " type="button" id="webcamButton">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                        class="size-6 icon flex-center">
+                        class="size-12 icon flex-center">
                         <path fill-rule="evenodd"
                             d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z"
                             clip-rule="evenodd" />
@@ -114,7 +111,7 @@
 
                 <!-- speaker button-->
                 <button class="button-round flex-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-14">
                         <path
                             d="M13.5 4.06c0-1.336-1.616-2.005-2.56-1.06l-4.5 4.5H4.508c-1.141 0-2.318.664-2.66 1.905A9.76 9.76 0 0 0 1.5 12c0 .898.121 1.768.35 2.595.341 1.24 1.518 1.905 2.659 1.905h1.93l4.5 4.5c.945.945 2.561.276 2.561-1.06V4.06ZM18.584 5.106a.75.75 0 0 1 1.06 0c3.808 3.807 3.808 9.98 0 13.788a.75.75 0 0 1-1.06-1.06 8.25 8.25 0 0 0 0-11.668.75.75 0 0 1 0-1.06Z" />
                         <path
@@ -125,7 +122,7 @@
         </section>
     </main>
 
-    <footer></footer>
+    <footer class="overflow-hidden"></footer>
     <script>
         function myFunction() {
           alert("I am an alert box!");
