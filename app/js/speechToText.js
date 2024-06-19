@@ -105,13 +105,13 @@ function speak() {
     synth.speak(utterThis);
   }
 }
-
+/*
 inputForm.onsubmit = function (event) {
   event.preventDefault();
   speak();
   inputTxt.blur();
 };
-
+*/
 function CreateTranslatedMessage(text){
   const translationMessageDiv = document.createElement("div");
   const translationMessageLabel = document.createElement("label");

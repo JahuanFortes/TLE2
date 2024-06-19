@@ -28,13 +28,13 @@ function fetchJSONData() {
 fetchJSONData();
 
 const chatHistory = document.getElementById('history');
-function CreateTranslatedMessage(){
+function CreateTranslatedMessage(text){
   const translationMessageDiv = document.createElement("div");
 const translationMessageLabel = document.createElement("label");
   translationMessageDiv.classList.add("message");
   translationMessageDiv.classList.add("right");
   translationMessageLabel.classList.add("translation-label");
-  translationMessageLabel.innerText = 'Testing!';
+  translationMessageLabel.innerText = text;
   chatHistory.appendChild(translationMessageDiv);
   translationMessageDiv.appendChild(translationMessageLabel);
 }
@@ -96,7 +96,7 @@ function hasGetUserMedia() {
 // wants to activate it.
 if (hasGetUserMedia()) {
   enableWebcamButton = document.getElementById("webcamButton");
-  enableWebcamButton.addEventListener("click", CreateTranslatedMessage);
+  enableWebcamButton.addEventListener("click", enableCam);
 } else {
   console.warn("getUserMedia() is not supported by your browser");
 }
@@ -151,7 +151,7 @@ async function predictWebcam() {
   webcamElement.style.height = videoHeight;
   canvasElement.style.width = videoWidth;
   webcamElement.style.width = videoWidth;
-console.log(results.landmarks);
+  //console.log(results.landmarks);
   if (results.landmarks.length > 0) {
     for (const landmarks of results.landmarks) {
       drawingUtils.drawConnectors(
@@ -189,19 +189,18 @@ console.log(results.landmarks);
         }
         collectorTimer++;
       } else {
-        console.log(dataArray);
-        
+        //console.log(dataArray);
+        collectorTimer = 0;
         let predictionResult = await nn.classify(dataArray);
         console.log(predictionResult);
         if(typeof predictionResult !== undefined){
           dataArray = [];
-          collectorTimer = 0;
         }
         const label = predictionResult[0].label;
         prediction.innerText = `Ik denk dat jij ${label} gebaart!`;
-        predictionSection.appendChild(prediction);
+        //predictionSection.appendChild(prediction);
         console.log("Your label is " + label);
-        
+        CreateTranslatedMessage(label);
       }
     }
   }
