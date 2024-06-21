@@ -163,7 +163,7 @@ async function predictWebcam() {
     lastVideoTime = video.currentTime;
     results = gestureRecognizer.recognizeForVideo(video, nowInMs);
   }
-
+/*
   canvasCtx.save();
   canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
   const drawingUtils = new DrawingUtils(canvasCtx);
@@ -191,6 +191,7 @@ async function predictWebcam() {
   }
  
   canvasCtx.restore();
+  */
   if (results.gestures.length > 0) {
     gestureOutput.style.display = "block";
     gestureOutput.style.width = videoWidth;
