@@ -4,6 +4,7 @@ import { GestureRecognizer,FilesetResolver,DrawingUtils,PoseLandmarker} from "ht
   let gestureRecognizer = GestureRecognizer;
   let runningMode = "IMAGE";
   let enableWebcamButton = HTMLButtonElement;
+  let disableWebcamButton = HTMLButtonElement;
   let webcamRunning = false;
   // const videoHeight = "360px";
   // const videoWidth = "480px";
@@ -12,12 +13,16 @@ import { GestureRecognizer,FilesetResolver,DrawingUtils,PoseLandmarker} from "ht
   let prediction = document.createElement("h3");
   let collectorTimer = 0;
   let dataArray = [];
+  let canCreateMessage = true;
+  disableWebcamButton = document.getElementById("webcamButtonStop");
+  disableWebcamButton.addEventListener("click", disableCam);
 const nn = ml5.neuralNetwork({ task: 'classification', debug: true })
 const modelDetails = {
     model: '../model/model.json',
     metadata: '../model/model_meta.json',
     weights: '../model/model.weights.bin'
 }
+ml5.setBackend("webgl");
 nn.load(modelDetails, () => console.log("het model is geladen!"))
 function fetchJSONData() {
     fetch("../data.json")
@@ -30,13 +35,18 @@ fetchJSONData();
 const chatHistory = document.getElementById('history');
 function CreateTranslatedMessage(text){
   const translationMessageDiv = document.createElement("div");
-const translationMessageLabel = document.createElement("label");
+  const translationMessageLabel = document.createElement("label");
   translationMessageDiv.classList.add("message");
   translationMessageDiv.classList.add("right");
   translationMessageLabel.classList.add("translation-label");
-  translationMessageLabel.innerText = text;
+  translationMessageLabel.innerText = "Vertaalde gebaar: " +text;
   chatHistory.appendChild(translationMessageDiv);
   translationMessageDiv.appendChild(translationMessageLabel);
+  canCreateMessage = false;
+  setTimeout(function(){ 
+    canCreateMessage = true; 
+}, 5000);
+
 }
 function appInit(data){
   /*
@@ -127,7 +137,12 @@ function enableCam(event) {
     video.addEventListener("loadeddata", predictWebcam);
   });
 }
-
+function disableCam(event) {
+  if (webcamRunning === true) {
+    webcamRunning = false;
+    //enableWebcamButton.innerText = "ENABLE PREDICTIONS";
+  }
+}
 let lastVideoTime = -1;
 let results = undefined;
 async function predictWebcam() {
@@ -142,7 +157,7 @@ async function predictWebcam() {
     lastVideoTime = video.currentTime;
     results = gestureRecognizer.recognizeForVideo(video, nowInMs);
   }
-/*
+
   canvasCtx.save();
   canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
   const drawingUtils = new DrawingUtils(canvasCtx);
@@ -159,18 +174,18 @@ async function predictWebcam() {
         GestureRecognizer.HAND_CONNECTIONS,
         {
           color: "#00FF00",
-          lineWidth: 5
+          lineWidth: 1
         }
       );
       drawingUtils.drawLandmarks(landmarks, {
         color: "#FF0000",
-        lineWidth: 2
+        lineWidth: 1
       });
     }
   }
  
   canvasCtx.restore();
- */
+ 
   // Call this function again to keep predicting when the browser is ready.
   if (webcamRunning === true) {
     window.requestAnimationFrame(predictWebcam);
@@ -200,7 +215,9 @@ async function predictWebcam() {
         prediction.innerText = `Ik denk dat jij ${label} gebaart!`;
         //predictionSection.appendChild(prediction);
         console.log("Your label is " + label);
-        CreateTranslatedMessage(label);
+        if(canCreateMessage === true){
+          CreateTranslatedMessage(label);
+        }
       }
     }
   }

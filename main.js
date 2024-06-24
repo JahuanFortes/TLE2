@@ -12,7 +12,7 @@ let webcamRunning = false;
 const videoHeight = "360px";
 const videoWidth = "480px";
 let timeLog = false;
-let time = setInterval(timer, 10);
+let time = setInterval(timer, 1);
 let recording = false;
 let appended = false;
 let currentSign = {
@@ -246,6 +246,7 @@ async function predictWebcam() {
         currentSign.label = select.value;
       }
       recording = false;
+      currentSign.data = [];
     }
   }
 }

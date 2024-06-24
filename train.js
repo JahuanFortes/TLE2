@@ -29,7 +29,7 @@ function trainNN(data){
     }
 function startTraining(){
     nn.normalizeData()
-    nn.train({ epochs: 300, learningRate: 1  }, () => finishedTraining()) 
+    nn.train({ epochs: 500, learningRate: 1  }, () => finishedTraining()) 
 }
 async function finishedTraining(){
     console.log("Finished training!");
