@@ -51,25 +51,46 @@ speechButton.addEventListener('mouseup', function () {
     speechEnd.style.display = "none";
 })
 
+function CreateTranslatedMessage(text){
+  const translationMessageDiv = document.createElement("div");
+  const translationMessageLabel = document.createElement("label");
+  translationMessageDiv.classList.add("message");
+  translationMessageDiv.classList.add("left");
+  translationMessageLabel.classList.add("translation-label");
+  translationMessageLabel.innerText = text;
+  chatHistory.appendChild(translationMessageDiv);
+  translationMessageDiv.appendChild(translationMessageLabel);
+  speakText(text); // Speak the text when it's generated
+}
 
-function newSpeechMessage(text){
-    let messageLeft = document.createElement('div');
-    messageLeft.classList.add("message");
-    messageLeft.classList.add("left");
 
-    let lableMessage = document.createElement('label');
-    lableMessage.htmlFor='speechOnput';
-    lableMessage.classList.add("translation-label");
-    lableMessage.textContent = ":";
 
-    let output = document.createElement('span');
-    output.classList.add("translation-text");
-    output.id='speechOnput';
 
-    output.textContent =  text;
+// Text-to-speech functionality
+const synth = window.speechSynthesis;
+let isMuted = false;
 
-    messageLeft.appendChild(lableMessage);
-    messageLeft.appendChild(output);
+const speakerButton = document.getElementById('speakerButton');
+const unmutedIcon = document.getElementById('unmutedIcon');
+const mutedIcon = document.getElementById('mutedIcon');
 
-    chathistory[0].appendChild(messageLeft)
+speakerButton.addEventListener('click', () => {
+  isMuted = !isMuted;
+  if (isMuted) {
+      unmutedIcon.style.display = 'none';
+      mutedIcon.style.display = 'block';
+  } else {
+      unmutedIcon.style.display = 'block';
+      mutedIcon.style.display = 'none';
+  }
+  console.log('Mute state:', isMuted);
+});
+
+function speakText(text) {
+    if (isMuted) return;
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'nl-NL';
+    utterance.rate = 0.5; 
+    synth.speak(utterance);
 }
