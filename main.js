@@ -12,7 +12,7 @@ let webcamRunning = false;
 const videoHeight = "360px";
 const videoWidth = "480px";
 let timeLog = false;
-let time = setInterval(timer, 1000);
+let time = setInterval(timer, 10);
 let recording = false;
 let appended = false;
 let currentSign = {
@@ -45,7 +45,7 @@ const loadButton = document.getElementById("poseLoad");
 const loadListener = document.addEventListener("click", loadPoses);
 let select = document.getElementById("poses");
 let ShowingCords = false;
-let recordsamplesize = 40;
+let recordsamplesize = 500;
 function timer(){
     timeLog =! timeLog;
 }
@@ -192,6 +192,7 @@ async function predictWebcam() {
  
   canvasCtx.restore();
   */
+ /*
   if (results.gestures.length > 0) {
     gestureOutput.style.display = "block";
     gestureOutput.style.width = videoWidth;
@@ -204,6 +205,7 @@ async function predictWebcam() {
   } else {
     gestureOutput.style.display = "none";
   }
+  */
   // Call this function again to keep predicting when the browser is ready.
   if (webcamRunning === true) {
     window.requestAnimationFrame(predictWebcam);
@@ -231,7 +233,6 @@ async function predictWebcam() {
     console.log("test");
     if(currentSign.data.length<recordsamplesize){
       currentSign.data.push(arr)
-      console.log("Fuck");
     }
     else
     {
