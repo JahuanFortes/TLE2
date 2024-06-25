@@ -7,7 +7,7 @@ const outputText = document.getElementById('input');
 const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition);
 
 recognition.lang = 'nl-NL';
-recognition.interimResults = true;
+// recognition.interimResults = true; // giving interim result as well.
 recognition.continuous = true;
 
 speechEnd.style.display = "none";
