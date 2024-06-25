@@ -167,6 +167,7 @@ async function predictWebcam() {
   // canvasElement.style.width = videoWidth;
   // webcamElement.style.width = videoWidth;
   //console.log(results.landmarks);
+  /*
   if (results.landmarks.length > 0) {
     for (const landmarks of results.landmarks) {
       drawingUtils.drawConnectors(
@@ -185,7 +186,7 @@ async function predictWebcam() {
   }
  
   canvasCtx.restore();
- 
+ */
   // Call this function again to keep predicting when the browser is ready.
   if (webcamRunning === true) {
     window.requestAnimationFrame(predictWebcam);

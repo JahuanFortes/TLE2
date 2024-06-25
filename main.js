@@ -57,6 +57,7 @@ function addToLocalStorage(){
     let signLabel = document.getElementById('label');
     let label = signLabel.value;
     localStorage.setItem(label, JSON.stringify(currentSign));
+    currentSign.data = [];
   } else {
     localStorage.setItem(select.value, JSON.stringify(currentSign));
   }
@@ -246,7 +247,6 @@ async function predictWebcam() {
         currentSign.label = select.value;
       }
       recording = false;
-      currentSign.data = [];
     }
   }
 }

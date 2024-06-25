@@ -3,7 +3,7 @@ const trainListener = trainButton.addEventListener("click", fetchJSONData);
 const exportButton = document.getElementById("exportButton");
 const exportListener = exportButton.addEventListener("click", exportModel);
 const nn = ml5.neuralNetwork({ task: 'classification', debug: true})
-
+ml5.setBackend("webgl");
 function fetchJSONData() {
     fetch("data.json")
         .then((res) => res.json())
